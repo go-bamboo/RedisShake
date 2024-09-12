@@ -3,10 +3,10 @@ name = "oms"
 version = "1.0.0"
 
 [sync_reader]
-cluster = false            # set to true if source is a redis cluster
-address = "127.0.0.1:6379" # when cluster is true, set address to one of the cluster node
+cluster = true            # set to true if source is a redis cluster
+address = "10.100.192.171:6379" # when cluster is true, set address to one of the cluster node
 username = ""              # keep empty if not using ACL
-password = ""              # keep empty if no authentication is required
+password = "Password@123"              # keep empty if no authentication is required
 tls = false                #
 sync_rdb = true            # set to false if you don't want to sync rdb
 sync_aof = true            # set to false if you don't want to sync aof

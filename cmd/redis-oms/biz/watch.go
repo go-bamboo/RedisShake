@@ -45,6 +45,7 @@ func (w *Watcher) Stop(context.Context) error {
 
 func (w *Watcher) run() {
 	defer w.wg.Done()
+	utils.ChdirAndAcquireFileLock()
 	luaRuntime := filter.NewFunctionFilter(config.Opt.Filter.Function)
 
 	opts := new(reader.SyncReaderOptions)
