@@ -11,9 +11,10 @@ import (
 	"RedisShake/internal/config"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/google/wire"
+	"github.com/spf13/viper"
 )
 
 // initApp init kratos application.
-func InitApp(string, *config.Service) (*kratos.App, func(), error) {
+func InitApp(string, *config.Service, *viper.Viper) (*kratos.App, func(), error) {
 	panic(wire.Build(server.ProviderSet, biz.ProviderSet, newApp))
 }

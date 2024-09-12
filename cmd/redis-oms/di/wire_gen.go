@@ -11,14 +11,15 @@ import (
 	"RedisShake/cmd/redis-oms/server"
 	"RedisShake/internal/config"
 	"github.com/go-kratos/kratos/v2"
+	"github.com/spf13/viper"
 )
 
 // Injectors from wire.go:
 
 // initApp init kratos application.
-func InitApp(string2 string, service *config.Service) (*kratos.App, func(), error) {
+func InitApp(string2 string, service *config.Service, viperViper *viper.Viper) (*kratos.App, func(), error) {
 	grpcServer := server.NewGRPCServer()
-	watcher := biz.NewWatcher()
+	watcher := biz.NewWatcher(viperViper)
 	app := newApp(string2, service, grpcServer, watcher)
 	return app, func() {
 	}, nil

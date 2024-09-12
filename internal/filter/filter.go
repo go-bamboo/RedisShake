@@ -3,8 +3,8 @@ package filter
 import (
 	"RedisShake/internal/config"
 	"RedisShake/internal/entry"
+	"golang.org/x/exp/slices"
 	"log"
-	"slices"
 	"strings"
 )
 

@@ -22,12 +22,12 @@ var (
 )
 
 func main() {
-	_ = config.LoadConfig()
+	v := config.LoadConfig()
 
 	// uuid
 	id := uuid.New()
 
-	app, closeFunc, err := di.InitApp(id, config.Opt.Service)
+	app, closeFunc, err := di.InitApp(id, config.Opt.Service, v)
 	if err != nil {
 		log.Errorf("err: %v", err.Error())
 		return

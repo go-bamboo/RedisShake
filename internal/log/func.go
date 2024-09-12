@@ -4,18 +4,10 @@ import (
 	"github.com/go-bamboo/pkg/log"
 )
 
-func Debugf(format string, args ...interface{}) {
-	log.Debugf(format, args...)
-}
+var Debugf = log.Debugf
 
-func Infof(format string, args ...interface{}) {
-	log.Infof(format, args...)
-}
+var Infof = log.Infof
 
-func Warnf(format string, args ...interface{}) {
-	log.Warnf(format, args...)
-}
+var Warnf = log.Warnf
 
-func Panicf(format string, args ...interface{}) {
-	log.Fatalf(format, args...)
-}
+var Panicf = log.Fatalf
