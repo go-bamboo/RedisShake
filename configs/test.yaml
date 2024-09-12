@@ -1,0 +1,52 @@
+service:
+  name: im
+  version: v1.0.0
+server:
+  http:
+    address: 0.0.0.0:8016
+    timeout: 1s
+  grpc:
+    address: 0.0.0.0:9016
+    timeout: 1s
+data:
+  database:
+    driver: mysql
+    source: root:123456@tcp(127.0.0.1:3306)/handleim?charset=utf8&parseTime=true
+    logger:
+      logLevel: 4
+      ignoreRecordNotFoundError: true
+      slowThreshold: 1s
+  redis:
+    addrs:
+      - 127.0.0.1:6379
+    dial_timeout: 0.1s
+    read_timeout: 0.2s
+    write_timeout: 0.2s
+    expire_timeout: 600s
+    username: xx
+    db: 1
+  pub:
+    rabbit:
+      username: admin
+      password: "123456"
+      host: 127.0.0.1
+      port: 5672
+      vHost: /test
+    contentType:
+reg:
+  providerType: Etcd
+  endpoints:
+    - "127.0.0.1:2379"
+  dialTimeout: 3s
+trace:
+  providerType: Stdout
+  type: Traces
+  traces: true
+  endpoint: no
+logger:
+  - type: Stdout
+    level: -1
+  - type: File
+    level: -1
+    path: ./logs
+    logGroupName: oms

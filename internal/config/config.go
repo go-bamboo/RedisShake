@@ -6,11 +6,15 @@ import (
 	"strings"
 
 	"RedisShake/internal/log"
-
 	"github.com/mcuadros/go-defaults"
 	"github.com/rs/zerolog"
 	"github.com/spf13/viper"
 )
+
+type Service struct {
+	Name    string `mapstructure:"name" default:"shake"`
+	Version string `mapstructure:"version" default:"1.0.0"`
+}
 
 type AdvancedOptions struct {
 	Dir string `mapstructure:"dir" default:"data"`
@@ -59,6 +63,7 @@ func (opt *AdvancedOptions) GetPSyncCommand(address string) string {
 }
 
 type ShakeOptions struct {
+	Service  *Service
 	Function string `mapstructure:"function" default:""`
 	Advanced AdvancedOptions
 	Module   ModuleOptions
